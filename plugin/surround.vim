@@ -582,8 +582,6 @@ nnoremap <silent> <Plug>YSurround  :<C-U>set opfunc=<SID>opfunc2<CR>g@
 vnoremap <silent> <Plug>Vsurround  :<C-U>call <SID>opfunc(visualmode())<CR>
 vnoremap <silent> <Plug>VSurround  :<C-U>call <SID>opfunc(visualmode(),visualmode() ==# 'V' ? 1 : 0)<CR>
 vnoremap <silent> <Plug>VgSurround :<C-U>call <SID>opfunc(visualmode(),visualmode() ==# 'V' ? 0 : 1)<CR>
-inoremap <silent> <Plug>Isurround  <C-R>=<SID>insert()<CR>
-inoremap <silent> <Plug>ISurround  <C-R>=<SID>insert(1)<CR>
 
 if !exists("g:surround_no_mappings") || ! g:surround_no_mappings
   nmap      ds   <Plug>Dsurround
@@ -612,13 +610,6 @@ if !exists("g:surround_no_mappings") || ! g:surround_no_mappings
   else
     vmap    gS   <Plug>VgSurround
   endif
-  if !hasmapto("<Plug>Isurround","i") && "" == mapcheck("<C-S>","i")
-    imap    <C-S> <Plug>Isurround
-  endif
-  imap      <C-G>s <Plug>Isurround
-  imap      <C-G>S <Plug>ISurround
-  "Implemented internally instead
-  "imap      <C-S><C-S> <Plug>ISurround
 endif
 
 let &cpo = s:cpo_save
